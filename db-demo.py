@@ -3,11 +3,17 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
-    database="python"
+    password="qwe123"
 )
 
 mycursor = mydb.cursor()
+mycursor.execute("CREATE DATABASE IF NOT EXISTS python")
+mycursor.execute("SHOW DATABASES")
+
+for db in mycursor:
+    print(db)
+
+mycursor.execute("USE python")
 mycursor.execute("CREATE TABLE IF NOT EXISTS customers (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), address VARCHAR(255))")
 mycursor.execute("SHOW TABLES")
 
